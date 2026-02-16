@@ -478,6 +478,29 @@ document.addEventListener('DOMContentLoaded', () => {
 		const generateBtn = document.getElementById('generateReport');
 		const copyBtn = document.getElementById('copyReport');
 
+		// Keyboard shortcut for report generation
+		document.addEventListener('keydown', (event) => {
+
+			// If elements not found
+			if (!reportSection || !generateBtn) return;
+
+			// Ignore if extension disabled
+			if (generateBtn.disabled) return;
+
+			// Do nothing if report section is hidden (e.g., settings page open)
+			if (reportSection.classList.contains('hidden')) return;
+
+			// Prevent conflict with repoSearch dropdown navigation
+			const activeElement = document.activeElement;
+			if (activeElement && activeElement.id === 'repoSearch') return;
+
+			// Only Ctrl + Enter (clean & safe approach)
+			if (event.ctrlKey && event.key === 'Enter') {
+				event.preventDefault();
+				generateBtn.click();
+			}
+		});
+
 		generateBtn.addEventListener('click', () => {
 			chrome.storage.local.get(['platform'], (result) => {
 				const platform = result.platform || 'github';
@@ -764,7 +787,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					chrome.storage.local.get(['platform'], resolve);
 				});
 				platform = items.platform || 'github';
-			} catch (e) {}
+			} catch (e) { }
 			if (platform !== 'github') {
 				// Do not run repo fetch for non-GitHub platforms
 				if (repoStatus) repoStatus.textContent = 'Repository filtering is only available for GitHub.';
@@ -853,7 +876,7 @@ document.addEventListener('DOMContentLoaded', () => {
 						chrome.storage.local.get(['platform'], resolve);
 					});
 					platform = items.platform || 'github';
-				} catch (e) {}
+				} catch (e) { }
 				if (platform !== 'github') {
 					repoFilterContainer.classList.add('hidden');
 					useRepoFilter.checked = false;
@@ -1038,7 +1061,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					chrome.storage.local.get(['platform'], resolve);
 				});
 				platform = items.platform || 'github';
-			} catch (e) {}
+			} catch (e) { }
 			if (platform !== 'github') {
 				if (repoStatus) repoStatus.textContent = 'Repository loading is only available for GitHub.';
 				return;
@@ -1082,7 +1105,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					chrome.storage.local.get(['platform'], resolve);
 				});
 				platform = items.platform || 'github';
-			} catch (e) {}
+			} catch (e) { }
 			if (platform !== 'github') {
 				if (repoStatus) repoStatus.textContent = 'Repository fetching is only available for GitHub.';
 				return;
@@ -1623,7 +1646,7 @@ document.getElementById('refreshCache').addEventListener('click', async function
 				chrome.storage.local.get(['platform'], resolve);
 			});
 			platform = items.platform || 'github';
-		} catch (e) {}
+		} catch (e) { }
 
 		// Clear all caches
 		const keysToRemove = ['githubCache', 'repoCache', 'gitlabCache'];
