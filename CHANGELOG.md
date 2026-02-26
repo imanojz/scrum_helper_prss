@@ -9,6 +9,25 @@
 
 ## Maintenance
 
+* chore(deps)(deps-dev): bump @biomejs/biome from 2.4.2 to 2.4.4 (#394) @[dependabot[bot]](https://github.com/apps/dependabot)
+* chore(deps)(deps-dev): bump tailwindcss from 4.1.18 to 4.2.1 (#396) @[dependabot[bot]](https://github.com/apps/dependabot)
+* chore(deps)(deps-dev): bump @biomejs/biome from 2.3.14 to 2.4.2 (#378) @[dependabot[bot]](https://github.com/apps/dependabot)
+* chore(deps)(deps-dev): bump @biomejs/biome from 2.3.13 to 2.3.14 (#368) @[dependabot[bot]](https://github.com/apps/dependabot)
+* versionbump (#365) @vedansh-5
+
+---
+
+## v2.0.4 - 2026-02-26
+
+## What's Changed
+
+* Feature: Side panel extension window instead of popup window (#373) @vedansh-5
+* fix: remove toast for non-existed users (#381) @Mateeb-Haider
+* fix: repo-filtering \& input search visibility (#375) @Mateeb-Haider
+* Add Malayalam (ml) language support (#367) @SourishMerugu
+
+## Maintenance
+
 * chore(deps)(deps-dev): bump @biomejs/biome from 2.3.14 to 2.4.2 (#378) @[dependabot[bot]](https://github.com/apps/dependabot)
 * chore(deps)(deps-dev): bump @biomejs/biome from 2.3.13 to 2.3.14 (#368) @[dependabot[bot]](https://github.com/apps/dependabot)
 * versionbump (#365) @vedansh-5
